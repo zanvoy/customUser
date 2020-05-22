@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from UserApp.forms import LoginForm, RegesterForm
 from UserApp.models import SomeUser
+from customUser.settings import AUTH_USER_MODEL
 
 # Create your views here.
 def regesterview(request):
@@ -22,7 +23,7 @@ def regesterview(request):
 
 @login_required
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'setting': AUTH_USER_MODEL})
 
 
 def loginview(request):
